@@ -1,0 +1,35 @@
+# Default values for template-node-typescript.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+global: {}
+replicaCount: 1
+logLevel: "debug"
+image:
+  repository: de.icr.io/workshop-team-four/node-react-yks
+  tag: 0.0.2
+  pullPolicy: IfNotPresent
+  port: 3000
+nameOverride: node-react-yks
+fullnameOverride: node-react-yks
+service:
+  type: ClusterIP
+  port: 80
+route:
+  enabled: true
+ingress:
+  enabled: false
+  appid:
+    enabled: false
+    # web or app - https://cloud.ibm.com/docs/services/appid?topic=appid-kube-auth
+    requestType: web
+    #  host: hello
+  namespaceInHost: true
+  subdomain: containers.appdomain.cloud
+  path: "/"
+#  tlsSecretName: ""
+vcsInfo:
+  repoUrl: https://github.com/yogendrasri/node-react-yks.git
+  branch: 1b7406f92154bb0ae9140ed2e5ec63ca5939a9f6
+partOf: ""
+connectsTo: ""
+runtime: js
